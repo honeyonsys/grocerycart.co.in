@@ -295,7 +295,35 @@ img {
   float: left;
   margin:10px;
 }
-
+.cartArea{
+  width:100%;
+  height:auto;
+  float:left;
+  margin-top:20px;
+  border-top: #A40D51 solid 1px;
+}
+.cartArea img{
+  width:100px;
+  height: auto;
+  float: left;
+}
+.cartArea table{
+  width: 100%;
+  text-align: left;
+  vertical-align: middle;
+}
+.removeItemBtn{
+  width: 25px;
+  height:25px;
+  float: left;
+  font-size:30px;
+  color: #AAAAAA;
+  font-weight: bold;
+  cursor: pointer;
+}
+.removeItemBtn:hover {
+  color: #A40D51;
+}
 @media (max-width:480px) {
     .productCard {
         width:100%;
