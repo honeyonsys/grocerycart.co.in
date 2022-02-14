@@ -311,6 +311,11 @@ img {
   width: 100%;
   text-align: left;
   vertical-align: middle;
+  font-size: 14px;
+}
+.cartArea table tr{
+  margin-top: 10px;
+  border-top:#000 solid 1px;
 }
 .removeItemBtn{
   width: 25px;
@@ -323,6 +328,9 @@ img {
 }
 .removeItemBtn:hover {
   color: #A40D51;
+}
+.rowTotalPrice {
+  border:none;
 }
 @media (max-width:480px) {
     .productCard {
