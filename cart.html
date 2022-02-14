@@ -11,7 +11,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <link href="./assets/favicon.ico" rel="icon">
    
-<title>Grocery cart | Groceries in whole sale rates | online groceries</title>    
+<title>Shopping Cart | Grocery cart | Groceries in whole sale rates | online groceries | buy groceries items | buy online</title>    
 <link href="assets/style.css" rel="stylesheet">
 </head>
 <body>
@@ -57,7 +57,7 @@
                         <td><input type="number" min="1" max="100" value="${item['qty']}" onChange="increaseQty(${item['id']}, this.value)"></td>
                         <td>${item['amount']}</td>
                         <td><input class="rowTotalPrice" type="number" readonly min="1" max="100" value="${item['amount'] * item['qty']}"></td>
-                        <td><div class="removeItemBtn">X</div></td>
+                        <td><div class="removeItemBtn" onclick="removeCartItem(${item['id']})">X</div></td>
                     </tr>
                     
                     
@@ -73,6 +73,12 @@
                     </tr>
                 `;
                 itemListArea.innerHTML = tableHead + html.join('') + totalAmountRow + `</table>`;
+            } else {
+                itemListArea.innerHTML = `
+                <table>
+                <tr><td>There are no items in your cart. Please add some items from <a href="index.html">products page</a></td></tr>
+                </table>
+                `;
             }
         }
         catch(err) {
@@ -96,6 +102,30 @@
             loadCartProducts();
         }
         catch(err) {
+            console.log("Error: " + err.message);
+        }
+    }
+
+    // removing cart item when click on the cross button 
+    function removeCartItem(productId) {
+        try {
+            if(confirm("Do you really want to remove this item?")) {
+                var cartProducts = localStorage.getItem('Grocery-Cart');
+                var cartJSON = Array.from(JSON.parse(cartProducts));
+
+                for (var i = 0; i < cartJSON.length; i++) {
+                    if (cartJSON[i].id == productId) {
+                        cartJSON.splice(i, 1); 
+                        break;
+                    }
+                }
+                localStorage.setItem('Grocery-Cart', JSON.stringify(cartJSON));
+                loadCartProducts();
+                refreshCartCount(cartJSON.length);
+            }
+        }
+        catch(err)
+        {
             console.log("Error: " + err.message);
         }
     }
