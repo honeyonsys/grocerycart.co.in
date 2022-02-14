@@ -44,7 +44,9 @@
                                 <th width="10%"></th>
                             </tr>
                 `;
+                var totalAmount = 0;
                 const html = cartJSON.map( item =>{
+                    totalAmount = totalAmount + (item['qty'] * item['amount']);
                     return `
                     <tr>
                         <td>
@@ -58,10 +60,19 @@
                         <td><div class="removeItemBtn">X</div></td>
                     </tr>
                     
+                    
                     `;
                     });
-                
-                itemListArea.innerHTML = tableHead + html.join('') + `</table>`;
+
+                let totalAmountRow = `
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><b>Total:</b></td>
+                        <td><b>₹ ${totalAmount}</b></td>
+                        <td><button class="checkOutBtn">Checkout</button></td>
+                    </tr>
+                `;
+                itemListArea.innerHTML = tableHead + html.join('') + totalAmountRow + `</table>`;
             }
         }
         catch(err) {

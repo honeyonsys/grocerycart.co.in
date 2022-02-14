@@ -16,16 +16,18 @@ p{ font-size:1em;}
   height: auto;
 }
 .cart{ 
-  width: 80px; 
+  width: auto; 
   height:20px; 
   float: right; 
-  padding:0 5px 3px 5px; 
+  padding:0 8px 1px 8px; 
   margin-top:5px; 
   margin-right: 10px; 
-  background-color: #000; 
+  background-color: #F55FA4; 
   color:#ffffff; 
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
+  font-size:13px;
+  font-weight: bold;
 }
 #nav-container {
   position: fixed;
@@ -331,6 +333,14 @@ img {
 }
 .rowTotalPrice {
   border:none;
+}
+.checkOutBtn {
+  background-color: #A40D51;
+  color:#ffffff;
+  border: #A40D51 solid 1px;
+  cursor: pointer;
+  width:auto; 
+  padding:10px 20px;
 }
 @media (max-width:480px) {
     .productCard {
