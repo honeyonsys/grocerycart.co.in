@@ -1,0 +1,74 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Amul Buttter",
+            "amount": "120",
+            "description": "weight, ingredients",
+            "image": "img-01.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Fortune kachi ghani oil 3 Pack",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-02.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Fortune Kachi Ghani Pure Mustard Oil 5 litre",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-03.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Fortune soya health 5 litre",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-04.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Fortune rice bran oil 5 litre",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-05.jpg"
+        },
+        {
+            "id": 6,
+            "name": "pillsbury chakki fresh atta 10kg",
+            "amount": "300",
+            "description": "weight, ingredients",
+            "image": "img-06.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Nivea body lotion 400ml",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-07.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Nivea Value pack",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-08.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Nivea Value pack",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-09.jpg"
+        },{
+            "id": 10,
+            "name": "Trust suger 5kgpack",
+            "amount": "140",
+            "description": "weight, ingredients",
+            "image": "img-10.jpg"
+        }
+
+    ]
+}

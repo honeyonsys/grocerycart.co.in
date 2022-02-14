@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="description" name="grocery cart">
+<meta name="google" content="notranslate" />
+<meta content="grocery cart is developed by honeyonsys" name="author">
+
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
+<link href="./assets/favicon.ico" rel="icon">
+   
+<title>Shopping Cart | Grocery cart | Groceries in whole sale rates | online groceries | buy groceries items | buy online</title>    
+<link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navigationBar"></div>
+    <div class="contentArea">
+        
+        <h1>Shopping Cart</h1>
+        <div class="cartArea">
+            <table>
+                <tr><td>There are no items in your cart. Please add some items from <a href="index.html">products page</a></td></tr>
+            </table>
+        </div>
+    </div>
+<script src="main.js"></script>
+<script>
+    loadCartProducts();
+    function loadCartProducts() {
+        try {
+            var cartProducts = localStorage.getItem('Grocery-Cart');
+            var cartJSON = JSON.parse(cartProducts);
+            var itemListArea = document.querySelector(".cartArea");
+            if(cartJSON.length > 0) {
+                let tableHead = `
+                        <table>
+                            <tr>
+                                <th width="60%" colspan="2">Product Details</th>
+                                <th width="10%">Quantity</th>
+                                <th width="10%">Price (₹)</th>
+                                <th width="10%">Total (₹)</th>
+                                <th width="10%"></th>
+                            </tr>
+                `;
+                var totalAmount = 0;
+                const html = cartJSON.map( item =>{
+                    totalAmount = totalAmount + (item['qty'] * item['amount']);
+                    return `
+                    <tr>
+                        <td>
+                            <img src="assets/images/${item['productImage']}" />
+                            
+                        </td>
+                        <td>${item['productName']}</td>
+                        <td><input type="number" min="1" max="100" value="${item['qty']}" onChange="increaseQty(${item['id']}, this.value)"></td>
+                        <td>${item['amount']}</td>
+                        <td><input class="rowTotalPrice" type="number" readonly min="1" max="100" value="${item['amount'] * item['qty']}"></td>
+                        <td><div class="removeItemBtn" onclick="removeCartItem(${item['id']})">X</div></td>
+                    </tr>
+                    
+                    
+                    `;
+                    });
+
+                let totalAmountRow = `
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><b>Total:</b></td>
+                        <td><b>₹ ${totalAmount}</b></td>
+                        <td><button class="checkOutBtn">Checkout</button></td>
+                    </tr>
+                `;
+                itemListArea.innerHTML = tableHead + html.join('') + totalAmountRow + `</table>`;
+            } else {
+                itemListArea.innerHTML = `
+                <table>
+                <tr><td>There are no items in your cart. Please add some items from <a href="index.html">products page</a></td></tr>
+                </table>
+                `;
+            }
+        }
+        catch(err) {
+            console.log("Error: " + err.message);
+        }
+    }
+
+    // increasing quantity when quantity updates on field
+    function increaseQty(productId, qty) {
+        try {
+            var cartProducts = localStorage.getItem('Grocery-Cart');
+            var cartJSON = Array.from(JSON.parse(cartProducts));
+
+            for (var i = 0; i < cartJSON.length; i++) {
+                if (cartJSON[i].id == productId) {
+                    cartJSON[i].qty = qty; 
+                    break;
+                }
+            }
+            localStorage.setItem('Grocery-Cart', JSON.stringify(cartJSON));
+            loadCartProducts();
+        }
+        catch(err) {
+            console.log("Error: " + err.message);
+        }
+    }
+
+    // removing cart item when click on the cross button 
+    function removeCartItem(productId) {
+        try {
+            if(confirm("Do you really want to remove this item?")) {
+                var cartProducts = localStorage.getItem('Grocery-Cart');
+                var cartJSON = Array.from(JSON.parse(cartProducts));
+
+                for (var i = 0; i < cartJSON.length; i++) {
+                    if (cartJSON[i].id == productId) {
+                        cartJSON.splice(i, 1); 
+                        break;
+                    }
+                }
+                localStorage.setItem('Grocery-Cart', JSON.stringify(cartJSON));
+                loadCartProducts();
+                refreshCartCount(cartJSON.length);
+            }
+        }
+        catch(err)
+        {
+            console.log("Error: " + err.message);
+        }
+    }
+</script>
+</body>
+</html>
