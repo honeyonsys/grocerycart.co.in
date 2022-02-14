@@ -83,7 +83,6 @@
         var productsJSON = JSON.parse(response);
         var productList = document.querySelector(".products");
         const html = productsJSON['products'].map( item =>{
-            
             return `
             <div class="productCard">
                 <div class="productImg">
@@ -94,7 +93,7 @@
                     <div class="productDetail">
                         ${item['description']}
                     </div>
-                    <div class="btn-primary cartBtn" onclick="addtocart(${item['id']}, ${item['amount']})">Add to Cart</div>
+                    <div class="btn-primary cartBtn" onclick="addtocart(${item['id']}, ${item['amount']}, '${item['name']}', '${item['image']}')">Add to Cart</div>
                 </div>
             </div>
             `;
@@ -105,7 +104,7 @@
 
     
     
-    function addtocart(productId, productAmount) {
+    function addtocart(productId, productAmount, productName, productImage) {
         try {
             
             var cartProducts = localStorage.getItem('Grocery-Cart');
@@ -122,7 +121,7 @@
                 alert("Product is already added in cart. Please go to cart to increase quantity");
             } else {
                 //jsonData = JSON.stringify(jsonArray);
-                jsonData.push({"id": productId, "amount": productAmount, "qty": 1});
+                jsonData.push({"id": productId, "amount": productAmount, "qty": 1, "productName": productName, "productImage": productImage});
                 refreshCartCount(jsonData.length);
                 localStorage.setItem('Grocery-Cart', JSON.stringify(jsonData));
             }
