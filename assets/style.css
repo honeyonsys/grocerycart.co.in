@@ -250,10 +250,19 @@ img {
     font-weight: bold;
     
 }
-.productTitle span{
-  float:right;
+.productRate{
+  width:100%;
+    height:auto;
+    float: left;
+    font-size:16px;
+    font-weight: bold;
 
 }
+.productRate span{
+  font-size: 13px;
+  color: #7e7e7e;
+  text-decoration:line-through;
+} 
 .productDetail{
   width:100%;
   height:auto;
