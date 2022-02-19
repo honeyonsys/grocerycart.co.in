@@ -220,11 +220,11 @@ img {
     margin-left:20px;
     margin-top:20px;
     background: linear-gradient(#C9C9C9, #F2F2F2);
-    box-shadow: #A40D51 0px 0px 4px;
+    box-shadow: #83B271 0px 0px 4px;
 
 }
 .productCard:hover{
-    box-shadow:#A40D51 0px 0px 10px;
+    box-shadow:#83B271 0px 0px 10px;
 }
 .productImg{
     width:100%;
@@ -308,7 +308,7 @@ img {
   height:auto;
   float:left;
   margin-top:20px;
-  border-top: #A40D51 solid 1px;
+  border-top: #83B271 solid 1px;
 }
 .cartArea img{
   width:100px;
@@ -335,15 +335,15 @@ img {
   cursor: pointer;
 }
 .removeItemBtn:hover {
-  color: #A40D51;
+  color: #83B271;
 }
 .rowTotalPrice {
   border:none;
 }
 .checkOutBtn {
-  background-color: #A40D51;
+  background-color: #83B271;
   color:#ffffff;
-  border: #A40D51 solid 1px;
+  border: #83B271 solid 1px;
   cursor: pointer;
   width:auto; 
   padding:10px 20px;
