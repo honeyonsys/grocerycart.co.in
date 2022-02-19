@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="description" name="grocery cart">
+<meta name="google" content="notranslate" />
+<meta content="grocery cart is developed by honeyonsys" name="author">
+
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
+<link href="./assets/favicon.ico" rel="icon">
+   
+<title>Grocery cart | Groceries in whole sale rates | online groceries</title>    
+<link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navigationBar"></div>
+    <div class="introArea">
+        <div class="introLeft">
+            <h1>About Grocery Cart</h1>
+
+            <p>Grocery cart is started on late 2021. It is operating by Mr.Sunil Denis who is having wholesale network in ludhiana city. The idea for this estore is to expand the product selling in whole sale in whoe country. Currently main operations are going from the ludhiana only.</p>
+        </div>
+        <div class="introRight"></div>
+        
+    </div>
+    <div class="contentArea">
+        <div class="products"></div>
+        <!--
+        <div class="productCard">
+            <div class="productImg">
+                <img src="assets/images/img-01.jpg"/>
+            </div>
+            <div class="productDesc">
+                <div class="productTitle"><b>Amul Butter 500g</b> <span>Rs.120</span></div>
+                <div class="productDetail">
+                    <ul>
+                        <li>Weight: 500gn</li>
+                        <li>Ingredients: Milk, Mixed flavour, salt</li>
+                    </ul>
+                </div>
+                <div class="btn-primary btn">Add to Cart</div>
+            </div>
+        </div>
+        -->
+        
+        
+        <div class="contactDiv">
+            <h3>Contact Us</h3>
+            <div class="contactCard">
+                <i class="fa fa-phone"></i> +91-87258-96384
+            </div>
+            <div class="contactCard">
+                <i class="fa fa-envelope"></i> grocerycartpb@gmail.com
+            </div>
+            <div class="contactCard">
+                <i class="fa fa-home"></i> House #69, CMC Colony, Bhamian kalan, Tajpur Road, Ludhiana
+            </div>
+        </div>
+    </div>
+    
+
+
+<script>
+    //loading products from the json file
+    function loadJSON(callback) {
+        var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', 'products.json', true); // Replace 'my_data' with the path to your file
+        xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+                callback(xobj.responseText);
+            }
+        };
+        xobj.send(null);
+    }
+
+    
+    loadJSON(function (response) {
+        // Parse JSON string into object
+        var productsJSON = JSON.parse(response);
+        var productList = document.querySelector(".products");
+        const html = productsJSON['products'].map( item =>{
+            return `
+            <div class="productCard">
+                <div class="productImg">
+                    <img src="assets/images/${item['image']}"/>
+                </div>
+                <div class="productDesc">
+                    <div class="productTitle"><b>${item['name']}</b> <span>₹.${item['amount']}</span></div>
+                    <div class="productDetail">
+                        ${item['description']}
+                    </div>
+                    <div class="btn-primary cartBtn" onclick="addtocart(${item['id']}, ${item['amount']}, '${item['name']}', '${item['image']}')">Add to Cart</div>
+                </div>
+            </div>
+            `;
+            });
+            
+            productList.innerHTML = html.join('');
+    });
+
+    
+    
+    function addtocart(productId, productAmount, productName, productImage) {
+        try {
+            
+            var cartProducts = localStorage.getItem('Grocery-Cart');
+            var jsonData = Array.from(JSON.parse(cartProducts));
+            var isProductAddedInCart = 0;
+
+            for (var i = 0; i < jsonData.length; i++) {
+                if (jsonData[i].id == productId) {
+                    isProductAddedInCart = 1
+                    break;
+                }
+            }
+            if(isProductAddedInCart == 1) {
+                alert("Product is already added in cart. Please go to cart to increase quantity");
+            } else {
+                //jsonData = JSON.stringify(jsonArray);
+                jsonData.push({"id": productId, "amount": productAmount, "qty": 1, "productName": productName, "productImage": productImage});
+                refreshCartCount(jsonData.length);
+                localStorage.setItem('Grocery-Cart', JSON.stringify(jsonData));
+            }
+                      
+            
+            
+        }
+        catch(err) {
+            console.log("Error: " + err.message);
+        }
+        
+    }
+    // setting up cart key in localstorage
+    let cartProducts = localStorage.getItem('Grocery-Cart');
+    if(cartProducts == null) {
+        localStorage.setItem('Grocery-Cart', '[]');
+    }
+
+    
+</script>
+<script src="main.js"></script>
+
+</body>
+</html>
