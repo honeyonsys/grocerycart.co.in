@@ -2,71 +2,71 @@
     "products": [
         {
             "id": 1,
-            "name": "Amul Buttter",
-            "amount": "120",
-            "description": "weight, ingredients",
+            "name": "Amul Buttter (500g)",
+            "amount": "180",
+            "description": "<b>Ingrediens:</b><br> Milk FAT, Min : 80%, Moisture Mix : 16%, Salt, Max : 3%, Curd, Max :1% <br><b>Nutritional Facts:</b> <br> per 100g, Energy: 722 kcal, Energy from Fat: 720 kcal, Total Fat: 80 g, Saturated fat: 51 g, Cholesterol: 180 mg, Sodium: 836 mg, Total Carbohydrate: 0 g, Sugar: 0 g,Protein: 0.5 g, Vitamin A: 650 mcg",
             "image": "img-01.jpg"
         },
         {
             "id": 2,
             "name": "Fortune kachi ghani oil 3 Pack",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "130",
+            "description": "<b>Features:</b> <br> 1. Made from Cold Pressed (Kachi Ghani) Technology using Finest Mustard Seeds - Rich in Omega 3 & 6 that boost Immunity<br> 2. Rich in Vitamins A,E and Beta Carotene<br> 3. Naturally Cholesterol Free<br> 4. High in PUFA (Poly Unsaturated Fatty Acids)<br> 5. High Pungency and Strong Aroma - Mustard Oil with Long Shelf Life<br> <b>Nutritional Facts:</b> <br> Fat - 100g, Mono Unsaturated Faty Acids - 66g, Energy - 900 cals. ",
             "image": "img-02.jpg"
         },
         {
             "id": 3,
             "name": "Fortune Kachi Ghani Pure Mustard Oil 5 litre",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "639",
+            "description": "<b>Features:</b> <br> 1. Made from Cold Pressed (Kachi Ghani) Technology using Finest Mustard Seeds - Rich in Omega 3 & 6 that boost Immunity<br> 2. Rich in Vitamins A,E and Beta Carotene<br> 3. Naturally Cholesterol Free<br> 4. High in PUFA (Poly Unsaturated Fatty Acids)<br> 5. High Pungency and Strong Aroma - Mustard Oil with Long Shelf Life<br> <b>Nutritional Facts:</b> <br> Fat - 100g, Mono Unsaturated Faty Acids - 66g, Energy - 900 cals.",
             "image": "img-03.jpg"
         },
         {
             "id": 4,
             "name": "Fortune soya health 5 litre",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "526",
+            "description": "<b>Ingredients:</b><br> Refined Soyabean Oil, Permitted Antioxidant TBHQ (E-319), Vitamin A & Vitamin D. <br> <b>Nutritional Facts: </b><br> Energy - 900 Kcal; Carbohydrates, Protein - 0g; Cholestrol - 0g; Fat - 100g; Saturated Fatty Acid NMT*- 16g; Mono Unsaturated Fatty Acid NMT* - 22g; Poly Unsaturated Fatty Acid NMT* - 2g; Added Vitamin A @ 2500 I.U#/ 750 mcg*; Added Vitamin A @ 450 I.U#/ 11.25 mcg* (*NMT = Not more than, # I.U stands for International Units; **mcg stands for microgram; @ at the time of packing.",
             "image": "img-04.jpg"
         },
         {
             "id": 5,
             "name": "Fortune rice bran oil 5 litre",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "526",
+            "description": "<b>Ingredients:</b><br> Fortune Rice Bran Oil, 100% rice bran oil, had a superior content of Oryzanol. It is the healthiest ripe oil in India. It is logically enriched with multiple nutrients that translate into healthiness benefits for each member in the family.",
             "image": "img-05.jpg"
         },
         {
             "id": 6,
-            "name": "pillsbury chakki fresh atta 10kg",
-            "amount": "300",
-            "description": "weight, ingredients",
+            "name": "Pillsbury chakki fresh atta 10kg",
+            "amount": "280",
+            "description": "<b>Ingredients:</b><br> Pillsbury Chakki Fresh Atta has maize and soy along with five other grains like wheat. Whole grains like ragi and oats are also part of this wheat flour. <br> <b>Nutritional Facts: </b><br> The atta or wheat flour is a rich source of natural nutrients and iron, both of which are extremely good for your health. This is particularly useful for adults and growing children. Apart from dietary fibre, you will be getting your healthy quota of vitamins, minerals and plant-based protein from this food.  Consumption of whole grain in any form will reduce the chances of heart diseases and stroke and Type 2 diabetes",
             "image": "img-06.jpg"
         },
         {
             "id": 7,
             "name": "Nivea body lotion 400ml",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "180",
+            "description": "<b>Composition:</b><br> Almond Oil <br> <b>Features: </b><br>Intensively nourishes the skin. Reduces the roughness of dry skin. Formula with almond oil softens the skin. Say hello to deeply moisturised skin with the new NIVEA Nourishing Lotion Body Milk with deep moisture serum. This rich and creamy formula with 2 times more almond oil deeply moisturises and softens your dry skin. The lotion gives you deep moisturisation for up to 48 hours after a single application.",
             "image": "img-07.jpg"
         },
         {
             "id": 8,
             "name": "Nivea Value pack",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "410",
+            "description": "",
             "image": "img-08.jpg"
         },
         {
             "id": 9,
             "name": "Nivea Value pack",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "315",
+            "description": "",
             "image": "img-09.jpg"
         },{
             "id": 10,
             "name": "Trust suger 5kgpack",
-            "amount": "140",
-            "description": "weight, ingredients",
+            "amount": "180",
+            "description": "<b>Ingredients:</b> <br>Cane Sugar with added natural sugarcane extracts.",
             "image": "img-10.jpg"
         }
 
