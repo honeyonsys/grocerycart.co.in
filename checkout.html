@@ -77,8 +77,8 @@
             <input type="hidden" name="firstname" value="" />
             <input type="hidden" name="email" value="" />
             <input type="hidden" name="phone" value="" />
-            <input type="hidden" name="surl" value="https://honeyonsys.pythonanywhere.com/grocerycart/successpayment" />
-            <input type="hidden" name="furl" value="https://honeyonsys.pythonanywhere.com/grocerycart/failedpayment" />
+            <input type="hidden" name="surl" value="" />
+            <input type="hidden" name="furl" value="" />
             <input type="hidden" name="hash" value="" />
             <input type="submit">
             
@@ -86,6 +86,7 @@
     </div>
 <script src="main.js"></script>
 <script>
+    const apiUrl = 'https://honeyonsys.pythonanywhere.com/grocerycart';
     loadCartProducts();
     function loadCartProducts() {
         try {
@@ -161,7 +162,7 @@
         
         if(txnid.value == "" && hash.value == "") {
             var http = new XMLHttpRequest();
-            var url = 'https://honeyonsys.pythonanywhere.com/grocerycart/checkout';
+            var url = apiUrl+'/checkout';
             var params = 'key='+key.value+'&txnid=&amount='+amount.value+'&productinfo='+productInfo.value+'&firstname='+document.querySelector('#fname').value+'&email='+document.querySelector('#email').value+'&phone='+document.querySelector('#phone').value+'&surl='+surl.value+'&furl='+furl.value;
             http.open('POST', url, true);
 
@@ -177,6 +178,8 @@
                         hash.value = res[0].hashh;
                         firstName.value = res[0].posted.firstname;
                         //lastName.value = res[0].posted.lastname;
+                        surl.value = apiUrl+'/successpayment';
+                        furl.value = apiUrl+'/failedpayment'
                         email.value = res[0].posted.email;
                         phone.value = res[0].posted.phone;
                         document.querySelector('#checkOutFinalForm').submit();
