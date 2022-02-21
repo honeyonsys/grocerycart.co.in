@@ -77,8 +77,8 @@
             <input type="hidden" name="firstname" value="" />
             <input type="hidden" name="email" value="" />
             <input type="hidden" name="phone" value="" />
-            <input type="hidden" name="surl" value="http://127.0.0.1:8000/grocertcart/successpayment" />
-            <input type="hidden" name="furl" value="http://127.0.0.1:8000/failedpayment" />
+            <input type="hidden" name="surl" value="https://honeyonsys.pythonanywhere.com/grocerycart/successpayment" />
+            <input type="hidden" name="furl" value="https://honeyonsys.pythonanywhere.com/grocerycart/failedpayment" />
             <input type="hidden" name="hash" value="" />
             <input type="submit">
             
@@ -161,7 +161,7 @@
         
         if(txnid.value == "" && hash.value == "") {
             var http = new XMLHttpRequest();
-            var url = 'http://127.0.0.1:8000/grocerycart/checkout';
+            var url = 'https://honeyonsys.pythonanywhere.com/grocerycart/checkout';
             var params = 'key='+key.value+'&txnid=&amount='+amount.value+'&productinfo='+productInfo.value+'&firstname='+document.querySelector('#fname').value+'&email='+document.querySelector('#email').value+'&phone='+document.querySelector('#phone').value+'&surl='+surl.value+'&furl='+furl.value;
             http.open('POST', url, true);
 
