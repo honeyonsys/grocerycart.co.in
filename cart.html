@@ -38,31 +38,38 @@
                 let tableHead = `
                         <table>
                             <tr>
-                                <th width="60%" colspan="2">Product Details</th>
-                                <th width="10%">Quantity</th>
-                                <th width="10%">Price (₹)</th>
-                                <th width="10%">Total (₹)</th>
+                                <th width="70%">Product Details</th>
+                                <th width="20%">Total (₹)</th>
                                 <th width="10%"></th>
                             </tr>
                 `;
-                var totalAmount = 0;
+                let totalAmount = 0;
+                let numberId = 0;
                 const html = cartJSON.map( item =>{
                     totalAmount = totalAmount + (item['qty'] * item['amount']);
+                    numberId = parseInt(numberId) + 1;
                     return `
                     <tr>
                         <td>
                             <img src="assets/images/${item['productImage']}" />
-                            
+                            <br>
+                            ${item['productName']}
+                            <br>
+                            <b>₹${item['amount']}</b>
+                            <br>
+                            <button onclick="decrement('number'+${numberId})">-</button>
+                            <input type="number" id="number${numberId}"  min="1" max="100" value="${item['qty']}" onChange="increaseQty(${item['id']}, this.value)">
+                            <button onclick="increment('number'+${numberId})">+</button>
                         </td>
-                        <td>${item['productName']}</td>
-                        <td><input type="number" min="1" max="100" value="${item['qty']}" onChange="increaseQty(${item['id']}, this.value)"></td>
-                        <td>${item['amount']}</td>
+                        
                         <td><input class="rowTotalPrice" type="number" readonly min="1" max="100" value="${item['amount'] * item['qty']}"></td>
                         <td><div class="removeItemBtn" onclick="removeCartItem(${item['id']})">X</div></td>
                     </tr>
                     
                     
                     `;
+                    
+
                     });
 
                 let totalAmountRow = `
@@ -129,6 +136,16 @@
         {
             console.log("Error: " + err.message);
         }
+    }
+    function increment(numberId) {
+        let input = document.querySelector('#'+numberId);
+        input.stepUp();
+        input.dispatchEvent(new Event('change'));
+    }
+    function decrement(numberId) {
+        let input = document.querySelector('#'+numberId);
+        input.stepDown();
+        input.dispatchEvent(new Event('change'));
     }
 </script>
 </body>

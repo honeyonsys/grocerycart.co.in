@@ -28,7 +28,7 @@
     const params = new URLSearchParams(window.location.search);
     if(params.has('message')) {
         document.querySelector('#postedMessage').innerHTML = params.get('message');
-        localStorage.setItem('Grocery-Cart', []);
+        localStorage.setItem('Grocery-Cart', '[]');
     }
 </script>
 </body>

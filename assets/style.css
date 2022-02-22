@@ -381,7 +381,7 @@ img {
 }
 
 /* Style inputs, select elements and textareas */
-input[type=text], select, textarea{
+checkoutForm input[type=text], checkoutForm select, checkoutForm textarea{
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -406,7 +406,11 @@ input[type=submit], input[type=button] {
   cursor: pointer;
   float: right;
 }
-
+button{
+  background-color: #04AA6D;
+  color: white;
+  border: #04AA6D solid 1px;
+}
 /* Style the container */
 .container {
   border-radius: 5px;
@@ -438,6 +442,53 @@ input[type=submit], input[type=button] {
   visibility: hidden;
 }
 
+.addQuantityPopUp{
+  width: 100%;
+  height: auto;
+  float: left;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 20px;
+  background-color: #E4E4E4;
+  border-top:#04AA6D solid 1px;
+  box-shadow: #000 0px 0px 300px;
+  visibility: hidden;
+  transition: .3s;
+}
+.addToCartProductDesc {
+  width:98%;
+  height: auto;
+  float: left;
+  margin-top:10px;
+  margin-left: 20px;
+  font-size:14px;
+  font-weight: bold;
+}
+.quantityIncDecArea{
+  width:98%;
+  height: 40px;
+  float: left;
+  margin-top:10px;
+  margin-left:10px;
+}
+.quantityIncDecArea input {
+  width:calc(100% - 100px);
+  height: 40px;
+}
+.quantityIncDecArea button {
+  width:40px;
+  height: 40px;
+}
+.closeAddToCartPopup {
+  width:30px;
+  height:30px;
+  float:right;
+  margin-top:10px;
+  margin-right: 10px;
+  color: #000;
+  font-size:30px;
+  cursor: pointer;
+}
 @media (max-width:480px) {
     .productCard {
         width:100%;
