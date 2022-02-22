@@ -507,7 +507,7 @@ button{
   cursor: pointer;
 }
 @media (max-width:480px) {
-    .productCard {
+    .productCard, .contactCard {
         width:100%;
         margin-left:0;
     }
@@ -523,5 +523,6 @@ button{
       width: 100%;
       margin-top: 0;
     }
+    
 
 }
