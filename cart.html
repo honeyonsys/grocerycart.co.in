@@ -52,14 +52,15 @@
                     <tr>
                         <td>
                             <div><img src="assets/images/${item['productImage']}" /></div>
-                            <br><br>
-                            ${item['productName']}
-                            <br>
-                            <b>₹${item['amount']}</b>
-                            <br>
+                            
+                            <div>${item['productName']}</div>
+                            
+                            <div><b>₹${item['amount']}</b></div>
+                            <div>
                             <button onclick="decrement('number'+${numberId})">-</button>
                             <input type="number" id="number${numberId}"  min="1" max="100" value="${item['qty']}" onChange="increaseQty(${item['id']}, this.value)">
                             <button onclick="increment('number'+${numberId})">+</button>
+                            </div>
                         </td>
                         
                         <td><input class="rowTotalPrice" type="number" readonly min="1" max="100" value="${item['amount'] * item['qty']}"></td>
