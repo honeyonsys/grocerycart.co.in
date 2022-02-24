@@ -6,6 +6,13 @@
 <meta content="description" name="grocery cart">
 <meta name="google" content="notranslate" />
 <meta content="grocery cart is developed by honeyonsys" name="author">
+<meta property="og:title"
+    content="Grocery Cart | Buy groceries items in whole sale rates | Online groceries" />
+<meta property="og:site_name" content="http://grocerycart.co.in" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Purchase all your groceries in very less rates as compare to the MRP." />
+<meta property="og:url" content="http://grocerycart.co.in" />
+<meta property="og:image" content="http://grocerycart.co.in/assets/socialthumb.png" />
 
 <!-- Disable tap highlight on IE -->
 <meta name="msapplication-tap-highlight" content="no">
@@ -56,6 +63,9 @@
             var productsJSON = JSON.parse(response);
             for (var i = 0; i < productsJSON['products'].length; i++) {
                 if (productsJSON['products'][i].id == params.get('product')) {
+                    document.querySelector('title').innerHTML = productsJSON['products'][i].name + '| Grocery Cart';
+                    document.querySelector('meta[property="og:url"]').setAttribute("content", "http://grocerycart.co.in/productdetail.html?product="+productsJSON['products'][i].id)
+                    document.querySelector('meta[property="og:image"]').setAttribute("content", "http://grocerycart.co.in/assets/images/"+productsJSON['products'][i].image)
                     document.querySelector('#productHeading').innerHTML = productsJSON['products'][i].name;
                     document.querySelector('.productDescContent').innerHTML = productsJSON['products'][i].description;
                     document.querySelector('.productDetailPrice').innerHTML = '₹'+productsJSON['products'][i].amount;
