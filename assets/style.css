@@ -506,8 +506,47 @@ button{
   font-size:30px;
   cursor: pointer;
 }
+.productDescArea{
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  float: left;
+  margin-top:20px;
+
+}
+.productDetailImg {
+  width: 40%;
+  height:auto;
+  float: left;
+  border: #04AA6D solid 1px;
+}
+.productDetailImg img {
+  width:100%;
+  height: auto;
+}
+.productDetailDescription {
+  width:55%;
+  height: auto;
+  float: left;
+  margin-left:20px;
+}
+.productDetailPrice {
+  width:100%;
+  height: 40px;
+  float: left;
+  margin:10px 0 10px 0;
+  font-size:20px;
+  font-weight: bold;
+}
+.breadCrumbs {
+  width:100%; 
+  height: 30px;
+  float: left;
+  margin-top:20px 0 20px 0;
+  font-size:14px;
+}
 @media (max-width:480px) {
-    .productCard, .contactCard {
+    .productCard, .contactCard, .productDetailImg, .productDetailDescription {
         width:100%;
         margin-left:0;
     }

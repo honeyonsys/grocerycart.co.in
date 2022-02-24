@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="description" name="grocery cart">
+<meta name="google" content="notranslate" />
+<meta content="grocery cart is developed by honeyonsys" name="author">
+
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
+<link href="./assets/favicon.ico" rel="icon">
+   
+<title>Grocery cart | Groceries in whole sale rates | online groceries</title>    
+<link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navigationBar"></div>
+    <div class="addQuantityPopUp">
+        <div class="closeAddToCartPopup" onclick="hideAddToCartPopUp()">X</div>
+        <input type="hidden" id="selectedProductId" value="1"/>
+        <input type="hidden" id="selectedProductName" value="Amul Buttter (500g)" />
+        <input type="hidden" id="selectedProductImage" value="img-01.jpg"/>
+        <input type="hidden" id="selectedProductAmount" value="180"/>
+        <div class="addToCartProductDesc"></div>
+        <div class="quantityIncDecArea">
+            
+            <button onclick="incrementDecrement('decrease')">-</button>
+            <input type="number" id="qtyNumber"  min="0" max="100" value="0">
+            <button onclick="incrementDecrement('increase')">+</button>
+        </div>
+    </div>
+    <div class="contentArea">
+        <div class="breadCrumbs"><a href="http://grocerycart.co.in">Home</a> > <b id="breadcrumbpage"></b></div>
+    
+        <div class="productDescArea">
+            <div class="productDetailImg"></div>
+            <div class="productDetailDescription">
+                <h1 id="productHeading">No Product Found</h1>
+                <div class="productDescContent">
+                    
+                </div>
+                <div class="productDetailPrice"></div>
+                <div class="btn-primary cartBtn" onclick="selectProductForCart('1', '10.00', 'amul butter', 'img-01.png')">Add to Cart</div>  
+            </div>
+        </div>
+    
+    </div>
+
+<script src="main.js"></script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if(params.has('product')) {
+        loadJSON(function (response) {
+            // Parse JSON string into object
+            var productsJSON = JSON.parse(response);
+            for (var i = 0; i < productsJSON['products'].length; i++) {
+                if (productsJSON['products'][i].id == params.get('product')) {
+                    document.querySelector('#productHeading').innerHTML = productsJSON['products'][i].name;
+                    document.querySelector('.productDescContent').innerHTML = productsJSON['products'][i].description;
+                    document.querySelector('.productDetailPrice').innerHTML = '₹'+productsJSON['products'][i].amount;
+                    document.querySelector('.productDetailImg').innerHTML = '<img src="assets/images/'+productsJSON['products'][i].image+'" />';
+                    document.querySelector('#breadcrumbpage').innerHTML = '<a href="productdetail.html?product='+productsJSON['products'][i].id+'">'+productsJSON['products'][i].name+'</a>';
+                    
+                    document.querySelector('.cartBtn').setAttribute("onclick", "selectProductForCart('"+productsJSON['products'][i].id+"', '"+productsJSON['products'][i].amount+"','"+productsJSON['products'][i].name+"','"+ productsJSON['products'][i].image+"')");
+                    break;
+                }
+            }
+            
+        });
+        
+        
+    }
+
+</script>
+</body>
+</html>
