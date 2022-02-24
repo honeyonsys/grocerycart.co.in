@@ -545,6 +545,16 @@ button{
   margin-top:20px 0 20px 0;
   font-size:14px;
 }
+.footerArea{
+  width:100%;
+  height:auto; 
+  float: left;
+  margin-top:20px;
+  border-top: #7e7e7e solid 1px;
+  font-size:13px;
+  color:#797C82;
+  padding-top:10px;
+}
 @media (max-width:480px) {
     .productCard, .contactCard, .productDetailImg, .productDetailDescription {
         width:100%;

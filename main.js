@@ -20,6 +20,17 @@ if (request.status >= 200 && request.status < 400) {
     }
 };
 request.send();
+// loading footer from footer.html
+var request2 = new XMLHttpRequest();
+request2.open('GET', 'footer.html', true);
+request2.onload = function() {
+if (request2.status >= 200 && request2.status < 400) {
+        var resp = request2.responseText;
+        document.querySelector('.footerArea').innerHTML = resp;
+    }
+};
+request2.send();
+
 // sidebar loading ends here
 
 function hideAddToCartPopUp(){

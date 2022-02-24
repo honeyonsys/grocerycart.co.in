@@ -11,24 +11,28 @@
 <meta name="msapplication-tap-highlight" content="no">
 <link href="./assets/favicon.ico" rel="icon">
    
-<title>Grocery cart | Groceries in whole sale rates | online groceries</title>    
+<title>Contact Us | Grocery Cart | Groceries in whole sale rates | online groceries</title>    
 <link href="assets/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="navigationBar"></div>
     <div class="contentArea">
-        <h1>Payment successful</h1>
-        <div id="postedMessage"></div>
+        <h1>Contact Us</h1>
+        <div class="contactDiv">
+            <div class="contactCard">
+                <i class="fa fa-phone"></i> +91-87258-96384
+            </div>
+            <div class="contactCard">
+                <i class="fa fa-envelope"></i> grocerycartpb@gmail.com
+            </div>
+            <div class="contactCard">
+                <i class="fa fa-home"></i> #69, CMC Colony, Bhamian kalan, Tajpur Road, Ludhiana
+            </div>
+        </div>
         <div class="footerArea"></div>
     </div>
 
-<script src="main.js"></script>
-<script>
-    const params = new URLSearchParams(window.location.search);
-    if(params.has('message')) {
-        document.querySelector('#postedMessage').innerHTML = params.get('message');
-        localStorage.setItem('Grocery-Cart', '[]');
-    }
-</script>
+    <script src="main.js"></script>
+
 </body>
 </html>
