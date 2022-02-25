@@ -143,55 +143,58 @@
             }
         }
         catch(err) {
-            console.log("Error: " + err.message);
+            console.error("Error: " + err.message);
         }
     }
 
+    
     function sendCheckout() {
-        let key = document.querySelector('[name=key]');
-        let txnid = document.querySelector('[name=txnid]');
-        let hash = document.querySelector('[name=hash]');
-        let firstName = document.querySelector('[name=firstname]');
-        let lastName = document.querySelector('[name=lastname]');
-        let email = document.querySelector('[name=email]');
-        let address = document.querySelector('[name=address1]');
-        let phone = document.querySelector('[name=phone]')
-        let productInfo = document.querySelector('[name=productinfo]');
-        let amount = document.querySelector('[name=amount]');
-        let surl = document.querySelector('[name=surl]');
-        let furl = document.querySelector('[name=furl]');
-        
-        if(txnid.value == "" && hash.value == "") {
-            var http = new XMLHttpRequest();
-            var url = apiUrl+'/checkout';
-            var params = 'key='+key.value+'&txnid=&amount='+amount.value+'&productinfo='+productInfo.value+'&firstname='+document.querySelector('#fname').value+'&email='+document.querySelector('#email').value+'&phone='+document.querySelector('#phone').value+'&surl='+surl.value+'&furl='+furl.value;
-            http.open('POST', url, true);
+        try {
+            let key = document.querySelector('[name=key]');
+            let txnid = document.querySelector('[name=txnid]');
+            let hash = document.querySelector('[name=hash]');
+            let firstName = document.querySelector('[name=firstname]');
+            let lastName = document.querySelector('[name=lastname]');
+            let email = document.querySelector('[name=email]');
+            let address = document.querySelector('[name=address1]');
+            let phone = document.querySelector('[name=phone]')
+            let productInfo = document.querySelector('[name=productinfo]');
+            let amount = document.querySelector('[name=amount]');
+            let surl = document.querySelector('[name=surl]');
+            let furl = document.querySelector('[name=furl]');
+            
+            if(txnid.value == "" && hash.value == "") {
+                var http = new XMLHttpRequest();
+                var url = apiUrl+'/checkout';
+                var params = 'key='+key.value+'&txnid=&amount='+amount.value+'&productinfo='+productInfo.value+'&firstname='+document.querySelector('#fname').value+'&email='+document.querySelector('#email').value+'&phone='+document.querySelector('#phone').value+'&surl='+surl.value+'&furl='+furl.value;
+                http.open('POST', url, true);
 
-            //Send the proper header information along with the request
-            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                //Send the proper header information along with the request
+                http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-            http.onreadystatechange = function() {//Call a function when the state changes.
-                if(http.readyState == 4 && http.status == 200) {
-                    var res = JSON.parse(http.responseText);
-                    if(res[0].status == 1) {
-                        key.value = res[0].key;
-                        txnid.value = res[0].txnid;
-                        hash.value = res[0].hashh;
-                        firstName.value = res[0].posted.firstname;
-                        //lastName.value = res[0].posted.lastname;
-                        surl.value = apiUrl+'/successpayment';
-                        furl.value = apiUrl+'/failedpayment'
-                        email.value = res[0].posted.email;
-                        phone.value = res[0].posted.phone;
-                        document.querySelector('#checkOutFinalForm').submit();
+                http.onreadystatechange = function() {//Call a function when the state changes.
+                    if(http.readyState == 4 && http.status == 200) {
+                        var res = JSON.parse(http.responseText);
+                        if(res[0].status == 1) {
+                            key.value = res[0].key;
+                            txnid.value = res[0].txnid;
+                            hash.value = res[0].hashh;
+                            firstName.value = res[0].posted.firstname;
+                            //lastName.value = res[0].posted.lastname;
+                            surl.value = apiUrl+'/successpayment';
+                            furl.value = apiUrl+'/failedpayment'
+                            email.value = res[0].posted.email;
+                            phone.value = res[0].posted.phone;
+                            document.querySelector('#checkOutFinalForm').submit();
+                        }
                     }
                 }
+                http.send(params);
+                
             }
-            http.send(params);
-            
+        } catch(err) {
+            console.error("Error:"+err);
         }
-        
-
     }
     
 

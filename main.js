@@ -3,7 +3,7 @@ function refreshCartCount(count) {
         document.querySelector('#cartCount').innerText = count;
     } 
     catch(err) {
-        console.log("Error: " + err.message);
+        console.error(err.message);
     }
 }
 // Loading sidebar from sidebar.html
@@ -64,7 +64,7 @@ function selectProductForCart(productId, productAmount, productName, productImag
         
     }
     catch(err) {
-        console.log("Error: " + err.message);
+        console.error(err.message);
     }
 }
 function addtocart(productId, productAmount, productName, productImage) {
@@ -87,24 +87,45 @@ function addtocart(productId, productAmount, productName, productImage) {
     
     }
     catch(err) {
-        console.log("Error: " + err.message);
+        console.error(err.message);
     }
     
 }
-function updateQuantity(productId, quantity) {
+function updateQuantity(productId, quantity, productName, productAmount, productImage) {
     try {
-        var cartProducts = localStorage.getItem('Grocery-Cart');
-        var jsonData = Array.from(JSON.parse(cartProducts));
-        for (var i = 0; i < jsonData.length; i++) {
-            if (jsonData[i].id == productId) {
-                jsonData[i].qty = quantity;
-                break;
+        let cartProducts = localStorage.getItem('Grocery-Cart');
+        let jsonData = Array.from(JSON.parse(cartProducts));
+        let isProductAlreadyAdded = true;
+        
+        if(quantity == 0) {
+            // removing the cart item if the quantity is set to 0 for that item
+            for (let i = 0; i < jsonData.length; i++) {
+                if (jsonData[i].id == productId) {
+                    jsonData.splice(i, 1); 
+                    break;
+                }
+            }
+            localStorage.setItem('Grocery-Cart', JSON.stringify(jsonData));
+            refreshCartCount(jsonData.length);
+        } else {
+            for (let i = 0; i < jsonData.length; i++) {
+                if (jsonData[i].id == productId) {
+                    jsonData[i].qty = quantity;
+                    isProductAlreadyAdded = false;
+                    break;
+                }
+            }
+            // if the product is not found in the added product list then it will add into the list
+            if(isProductAlreadyAdded) {
+                addtocart(productId, productAmount, productName, productImage);
+            } else {
+                localStorage.setItem('Grocery-Cart', JSON.stringify(jsonData));
             }
         }
-        localStorage.setItem('Grocery-Cart', JSON.stringify(jsonData));
+        
     }
     catch(err) {
-        console.log("Error: " + err.message);
+        console.error(err.message);
     }
 }
 // setting up cart key in localstorage
@@ -119,13 +140,9 @@ function incrementDecrement(operator) {
     let productName = document.querySelector('#selectedProductName');
     let productAmount = document.querySelector('#selectedProductAmount');
     let productImage = document.querySelector('#selectedProductImage');
-    let quantityNumber = parseInt(quantity.value);
-    if(quantityNumber == 0) {
-        addtocart(productId.value, productAmount.value, productName.value, productImage.value);
-    } else if(quantityNumber > 0) {
-        updateQuantity(productId.value, quantityNumber);
-    }
     operator === 'increase' ? quantity.stepUp() : quantity.stepDown();
+    let quantityNumber = parseInt(quantity.value);
+    updateQuantity(productId.value, quantityNumber, productName.value, productAmount.value, productImage.value);
     
 }
 
